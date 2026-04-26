@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Download') {
+            steps {
+                build job: 'Download'
+            }
+        }
+        stage('Train') {
+            steps {
+                build job: 'Train'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                build job: 'Deploy'
+            }
+        }
+        stage('Status') {
+            steps {
+                build job: 'Healthy'
+            }
+        }
+    }
+}
